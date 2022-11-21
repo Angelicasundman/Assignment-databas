@@ -1,0 +1,66 @@
+﻿<Window x:Class="Assignment_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment_wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="500">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Products"/>
+            <ComboBox Name="cb_product" DisplayMemberPath="Value" Margin="0 5 5 5"/>
+            <Button x:Name="btn_AddToList" Content="Add to cart" Click="btn_AddToList_Click" Margin="0 0 0 15"/>
+                <TextBlock Text="Customers"/>
+            <ComboBox Name="cb_customer" DisplayMemberPath="Value" Margin="0 5 5 5"/>
+                
+            </StackPanel>
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"><TextBlock Text="Cart" FontSize="16"/>
+                </StackPanel>
+            <StackPanel Grid.Row="1">
+                <ListView x:Name="lvProducts" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Price}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Total price: "/>
+                <TextBlock x:Name="tb_totalPrice" FontSize="12" Text=""/>
+            </StackPanel>
+            <StackPanel Margin="5" Grid.Row="3">
+                <Button x:Name="btn_PutOrder" Content="Send Order" Click="btn_PutOrder_Click"  Margin="0 0 5 0"/>
+            </StackPanel>
+        </Grid>
+        
+        </Grid>
+
+</Window>
